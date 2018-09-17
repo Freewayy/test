@@ -5,7 +5,7 @@ import { PP_AUTH } from '../../../../../sdk/src/ppApi'
 var Input = UI.Input;
 var Button = UI.Button;
 var Checkbox = UI.Checkbox;
-console.log(1)
+
 module.exports = React.createClass({
     getInitialState: function () {
         return {

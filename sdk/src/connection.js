@@ -2333,7 +2333,7 @@ connection.prototype.send = function (messageSource) {
             if (message.resource) {
                 toJid = toJid + '/' + message.resource;
             }
-
+            
             message.toJid = toJid;
             message.id = message.id || this.getUniqueId();
             _msgHash[message.id] = new _message(message);
@@ -4185,18 +4185,19 @@ connection.prototype.listGroupMember = function (opt) {
         return;
     }
     var requestData = [],
-        groupId = opt.groupId;
+        groupId = Demo.groups[opt.groupId].id;
     requestData['pagenum'] = opt.pageNum;
     requestData['pagesize'] = opt.pageSize;
     var options = {
-        url: this.apiUrl + '/' + this.orgName + '/' + this.appName + '/chatgroups'
-        + '/' + groupId + '/users',
+        // url: this.apiUrl + '/' + this.orgName + '/' + this.appName + '/chatgroups'
+        // + '/' + groupId + '/users',
+        url: PP_GROUPS + groupId + '/members',
         dataType: 'json',
         type: 'GET',
-        data: requestData,
-        headers: {
-            'Authorization': 'Bearer ' + this.token,
-            'Content-Type': 'application/json'
+        headers:{
+            "Accept":"*/*",
+            "Content-Type":"application/json; charset=utf-8",
+            "X-PEP-TOKEN": this.ppToken
         }
     };
     options.success = opt.success || _utils.emptyfn;

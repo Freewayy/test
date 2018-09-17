@@ -245,10 +245,27 @@ var CryptoJS = require('crypto-js');
         var me = this;
 
         var _send = function (message) {
-
+            const userId = conn.context.userId;
+            const to = message.group ? Demo.groups[message.to] : Demo.remarks[message.to];
+            const {
+                id, avatar, remark, headImage, groupName
+            } = to;
+            
+            const ext = {
+                from_user_id: userId,                           // 自己的环信 id
+                from_username: Demo.userInfo.name,              // 自己的昵称
+                from_headportrait: Demo.userInfo.avatar,        // 自己的头像
+                from_chatId: Demo.userInfo.id,                  // 自己的 id
+                to_user_id: message.to,                         // 对方的环信 id
+                to_username: remark || groupName,               // 对方的昵称
+                to_headportrait: avatar || headImage,           // 对方的头像
+                to_chatId: id                                   // 对方的 id
+            }
             message.ext = message.ext || {};
+            message.ext = {...ext};
             message.ext.weichat = message.ext.weichat || {};
             message.ext.weichat.originType = message.ext.weichat.originType || 'webim';
+            
 
             var dom;
             var json = {

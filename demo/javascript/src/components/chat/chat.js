@@ -801,11 +801,13 @@ module.exports = React.createClass({
                 success: function (resp) {
                     var data = resp;
                     for (var i in data) {
+                        Demo.groups[data[i].groupId] = data[i];
                         data[i]['name'] = data[i]['groupName'];
                         data[i]['roomId'] = data[i]['groupId'];
                         delete data[i]['groupname'];
                         delete data[i]['groupid'];
                     }
+
                     this.setState({groups: data});
                 }.bind(this),
                 error: function (e) {

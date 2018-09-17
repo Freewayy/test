@@ -53,7 +53,7 @@ module.exports = React.createClass({
             <div>
                 <i className='webim-operations-icon font xsmaller' onClick={this.update}>M</i>
                 <ul className={'webim-operations' + className}>
-                    <li onClick={this.addFriends}>
+                    {/* <li onClick={this.addFriends}>
                         <i className='font smallest'>L</i>
                         <span>{Demo.lan.addAFriend}</span>
                     </li>
@@ -68,7 +68,7 @@ module.exports = React.createClass({
                     <li onClick={this.createGroup}>
                         <i className='font smallest'>L</i>
                         <span>{Demo.lan.createGroup}</span>
-                    </li>
+                    </li> */}
                     <li onClick={this.logout}>
                         <i className='font smallest'>Q</i>
                         <span>{Demo.lan.quit}({this.props.username})</span>

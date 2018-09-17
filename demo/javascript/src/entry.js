@@ -51,6 +51,7 @@ Demo.roster = {};
 Demo.friends = [];
 Demo.strangers = {};
 Demo.blacklist = {};
+Demo.groups = {};
 Demo.avatars = {};
 Demo.userInfo = {
     name: ''

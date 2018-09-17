@@ -5,6 +5,7 @@ var Avatar = require('../common/avatar');
 var OperationsGroups = require('./operationsGroups');
 var OperationsFriends = require('./operationsFriends');
 var _ = require('underscore');
+import { PP_FILE } from '../../../../../sdk/src/ppApi';
 
 module.exports = React.createClass({
     getInitialState: function () {
@@ -116,7 +117,7 @@ module.exports = React.createClass({
                     pageSize: pageSize,
                     groupId: Demo.selected,
                     success: function (resp) {
-                        var data = resp.data, admin = this.state.admin;
+                        var data = resp, admin = this.state.admin;
                         if (this.state.admin) {
                             this.getAdmin(data);
                         } else {
@@ -458,21 +459,27 @@ module.exports = React.createClass({
             },
             memberStatus = this.state.memberShowStatus ? '' : ' hide',
             roomMember = [];
-
+            console.log(this.state.members);
         for (var i in this.state.members) {
-            var affiliation = i, username = this.state.members[i], isAdmin = false, isMuted = false;
-            var item = this.state.members[i];
-            if (item['member']) {
-                affiliation = 'member';
-                isAdmin = item['admin'];
-                isMuted = item['muted'];
-            } else {
-                affiliation = 'owner';
-            }
-            username = item[affiliation];
+            var affiliation = i, 
+                username = this.state.members[i].remark, 
+                isAdmin = false, isMuted = false;
+            //var item = this.state.members[i];
+            // if (item['member']) {
+            //     affiliation = 'member';
+            //     isAdmin = item['admin'];
+            //     isMuted = item['muted'];
+            // } else {
+            //     affiliation = 'owner';
+            // }
+            // username = item[affiliation];
             if (isAdmin) {
+
+                const url = this.state.members[i].avatar ? 
+                    PP_FILE + this.state.members[i].avatar + '?access_token=' + Demo.ppToken : 
+                    'demo/images/default.png';
                 roomMember.push(<li key={i}>
-                    <Avatar src='demo/images/default.png'/>
+                    <Avatar src={url}/>
                     <span className="webim-group-name">
                     {username}
                     </span>
@@ -506,8 +513,11 @@ module.exports = React.createClass({
                     </div>
                 </li>);
             } else {
+                const url = this.state.members[i].avatar ? 
+                    PP_FILE + this.state.members[i].avatar + '?access_token=' + Demo.ppToken : 
+                    'demo/images/default.png';
                 roomMember.push(<li key={i}>
-                    <Avatar src='demo/images/default.png'/>
+                    <Avatar src={url}/>
                     <span className="webim-group-name">
                     {username}
                     </span>

@@ -1,6 +1,6 @@
 var React = require("react");
 var Item = require('./contactItem');
-
+import { PP_FILE } from '../../../../../sdk/src/ppApi';
 
 module.exports = React.createClass({
 
@@ -48,7 +48,7 @@ module.exports = React.createClass({
                 continue;
             }
             const image = this.props.friends[i].avatar ?
-                `https://icmp2.propersoft.cn/icmp/server-dev/file/${this.props.friends[i].avatar}?access_token=${Demo.ppToken}` : 
+            PP_FILE + this.props.friends[i].avatar + '?access_token=' + Demo.ppToken : 
                  this.props.src;
             f.push(<Item id={this.props.friends[i].name} cate='friends' key={this.props.friends[i].name} username={this.props.friends[i].name} remark={this.props.friends[i].remark}
                          update={this.update} cur={this.props.curNode} brief={this.getBrief(this.props.friends[i].name)} src={image}/>);

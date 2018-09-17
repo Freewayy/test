@@ -3,6 +3,7 @@ var React = require('react');
 var Avatar = require('../common/avatar');
 var Cate = require('./cate');
 var Operations = require('./operations');
+import { PP_FILE } from '../../../../../sdk/src/ppApi';
 
 
 module.exports = React.createClass({
@@ -39,7 +40,7 @@ module.exports = React.createClass({
 
     render: function () {
         const src = Demo.userInfo.avatar ? 
-        `https://icmp2.propersoft.cn/icmp/server-dev/file/${Demo.userInfo.avatar}?access_token=${Demo.ppToken}`:
+        PP_FILE + Demo.userInfo.avatar + '?access_token=' + Demo.ppToken :
         null
         return (
             <div className='webim-leftbar'>

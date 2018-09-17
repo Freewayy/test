@@ -11,6 +11,7 @@ var videoMsg = require('./components/message/video');
 var Notify = require('./components/common/notify');
 var _ = require('underscore');
 var CryptoJS = require('crypto-js');
+import { PP_FILE } from '../../../sdk/src/ppApi';
 
 var Blacklist = (function () {
     var data = {};
@@ -437,7 +438,7 @@ module.exports = {
             return;
         } else {
             var avatar = Demo.avatars[msg.from] ? 
-                `https://icmp2.propersoft.cn/icmp/server-dev/file/${Demo.avatars[msg.from]}?access_token=${Demo.ppToken}`: 
+                PP_FILE + Demo.avatars[msg.from] + '?access_token=' + Demo.ppToken : 
                 null;
             
             brief = this.getBrief(data, type);

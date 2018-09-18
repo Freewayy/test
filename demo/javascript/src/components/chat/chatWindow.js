@@ -459,7 +459,7 @@ module.exports = React.createClass({
             },
             memberStatus = this.state.memberShowStatus ? '' : ' hide',
             roomMember = [];
-            console.log(this.state.members);
+
         for (var i in this.state.members) {
             var affiliation = i, 
                 username = this.state.members[i].remark, 
@@ -483,7 +483,7 @@ module.exports = React.createClass({
                     <span className="webim-group-name">
                     {username}
                     </span>
-                    <div className="webim-operation-icon"
+                    {/* <div className="webim-operation-icon"
                          style={{display: affiliation == 'owner' ? 'none' : ''}}>
                         <i className={"webim-leftbar-icon font smaller " + className}
                            style={{display: this.state.admin != 1 ? 'none' : ''}}
@@ -510,7 +510,7 @@ module.exports = React.createClass({
                            style={{display: this.state.admin != 1 ? 'none' : ''}}
                            onClick={isAdmin ? this.removeAdmin.bind(this, username) : this.setAdmin.bind(this, username)}
                            title={Demo.lan.rmAdministrator}>&darr;</i>
-                    </div>
+                    </div> */}
                 </li>);
             } else {
                 const url = this.state.members[i].avatar ? 
@@ -521,7 +521,7 @@ module.exports = React.createClass({
                     <span className="webim-group-name">
                     {username}
                     </span>
-                    <div className="webim-operation-icon"
+                    {/* <div className="webim-operation-icon"
                          style={{display: affiliation == 'owner' ? 'none' : ''}}>
                         <i className={"webim-leftbar-icon font smaller " + className}
                            style={{display: this.state.admin != 1 ? 'none' : ''}}
@@ -548,7 +548,7 @@ module.exports = React.createClass({
                            style={{display: this.state.admin != 1 ? 'none' : ''}}
                            onClick={isAdmin ? this.removeAdmin.bind(this, username) : this.setAdmin.bind(this, username)}
                            title={Demo.lan.administrator}>&uarr;</i>
-                    </div>
+                    </div> */}
                 </li>);
             }
 
@@ -596,9 +596,9 @@ module.exports = React.createClass({
                        onClick={this.preListMember}>D
                     </i>
                 </div>
-                <div className={(operations.length > 0) ? '' : 'hide'}>
+                {/* <div className={(operations.length > 0) ? '' : 'hide'}>
                     {operations}
-                </div>
+                </div> */}
                 <ul onBlur={this.handleOnBlur}
                     tabIndex="-1"
                     ref='member'

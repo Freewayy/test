@@ -69,7 +69,7 @@ var ChangeGroupSubject = React.createClass({
                     typeof this.props.getGroupInfo == 'function' && this.props.getGroupInfo('groupChat');
                 }
             };
-            console.log(options);
+            
             Demo.conn.modifyGroup(options);
         }
         this.close();

@@ -1320,14 +1320,16 @@ connection.prototype.getPpToken = async function(apiUrl,userId, pwd, suc){
     ).then((res) => {
         res.text().then( r => { 
             const data = {}
+            let userId = ''
+            let userInfo = {}
             try {
-                const userId = JSON.parse(decodeURIComponent(escape(window.atob(r.split('.')[0])))).id;
-                const userInfo = JSON.parse(decodeURIComponent(escape(window.atob(r.split('.')[1]))));
-                userInfo.userId = userId;
-                data.userInfo = userInfo;
+                userId = JSON.parse(decodeURIComponent(escape(window.atob(r.split('.')[0])))).id;
+                userInfo = JSON.parse(decodeURIComponent(escape(window.atob(r.split('.')[1]))));
             } catch (error) {
                 console.log(error)
             }
+            userInfo.userId = userId || '';
+            data.userInfo = userInfo || { name: '未获取'};
             data.ppToken = r,
             suc(data);
         });
@@ -1946,7 +1948,7 @@ connection.prototype.handleMessage = function (msginfo) {
                             , data: receiveMsg
                             , ext: extmsg
                             , sourceMsg: sourceMsg
-                            , name: Demo.remarks[from].remark
+                            , name: extmsg.from_username
                         };
                         !msg.delay && delete msg.delay;
                         msg.error = errorBool;
@@ -2092,8 +2094,9 @@ connection.prototype.handleMessage = function (msginfo) {
                 var bodyId = msg.id;
                 var deliverMessage = new WebIM.message('delivery', msgId);
                 deliverMessage.set({
-                    id: bodyId
-                    , to: msg.from
+                    id: bodyId,
+                    to: msg.from,
+                    ext: msg.ext
                 });
                 self.send(deliverMessage.body);
             }

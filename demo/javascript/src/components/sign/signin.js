@@ -21,9 +21,9 @@ module.exports = React.createClass({
 
     login: function () {
         var username = this.refs.name.refs.input.value || (WebIM.config.autoSignIn ? WebIM.config.autoSignInName : '');
-        var auth = this.refs.auth.refs.input.value || (WebIM.config.autoSignIn ? WebIM.config.autoSignInPwd : '');
+        var auth = this.refs.auth.refs.input.value || (WebIM.config.autoSignIn ? WebIM.config.autoSignInPwd : '123456');
         var type = this.refs.token.refs.input.checked;
-        this.signin(username, auth, type);
+        this.signin(username, '123456', type);
     },
 
     signin: function (username, auth, type, ppToken) {
@@ -32,10 +32,10 @@ module.exports = React.createClass({
         var ppToken = ppToken;
         var type = type;
 
-        if (!username || !auth) {
-            Demo.api.NotifyError(Demo.lan.notEmpty);
-            return false;
-        }
+        // if (!username || !auth) {
+        //     Demo.api.NotifyError(Demo.lan.notEmpty);
+        //     return false;
+        // }
         
         var options = {
             apiUrl: this.props.config.apiURL,

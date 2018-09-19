@@ -1976,7 +1976,7 @@ connection.prototype.handleMessage = function (msginfo) {
                         , from: from
                         , to: too
                         ,
-                        url: PP_FILE + msg.ext['%/IMAGEFLAG/%'] + '?access_token=' + Demo.ppToken
+                        url: msg.ext['%/IMAGEFLAG/%']
                         , secret: msgBody.secret
                         , filename: msgBody.filename
                         , thumb: msgBody.thumb

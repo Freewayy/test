@@ -1056,10 +1056,10 @@ module.exports = React.createClass({
             },
             onFileUploadComplete: function (data) {
                 //url = ((location.protocol != 'https:' && WebIM.config.isHttpDNS) ? (Demo.conn.apiUrl + data.uri.substr(data.uri.indexOf("/", 9))) : data.uri) + '/' + data.entities[0].uuid;
-                url = 'https://icmp2.propersoft.cn/icmp/server-dev/file/' + data
+                
                 me.refs.picture.value = null;
                 var option = {
-                    data: url,
+                    data: data,
                     from: Demo.user,
                     to: Demo.selected,
                     id: uid

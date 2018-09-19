@@ -271,12 +271,15 @@ var CryptoJS = require('crypto-js');
                 }
             }
             
-            
+            if ( message.body.url ) {
+                ext["%/IMAGEFLAG/%"] = message.body.url;
+                message.body.msg = "[图片]";
+                message.body.type = "txt";
+            }
             message.ext = message.ext || {};
             message.ext = {...ext};
             message.ext.weichat = message.ext.weichat || {};
             message.ext.weichat.originType = message.ext.weichat.originType || 'webim';
-            
 
             var dom;
             var json = {
@@ -345,7 +348,7 @@ var CryptoJS = require('crypto-js');
             var _tmpComplete = me.msg.onFileUploadComplete;
             var _complete = function (data) {
                 if (typeof data === 'string') {
-                    var url = 'https://icmp2.propersoft.cn/icmp/server-dev/file/' + data,
+                    var url = data,
                         secret = '1'
                 } else {
                     if (data.entities[0]['file-metadata']) {

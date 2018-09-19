@@ -442,6 +442,7 @@ module.exports = {
                 null;
             
             brief = this.getBrief(data, type);
+            //往组件里传props
             if (targetNode) {
                 switch (type) {
                     case 'txt':

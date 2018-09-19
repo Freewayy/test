@@ -11,7 +11,8 @@ var stropheConn = null;
 import {
     PP_AUTH,
     PP_GROUPS,
-    PP_CONCATS
+    PP_CONCATS,
+    PP_FILE
 } from './ppApi'
 
 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
@@ -1887,7 +1888,12 @@ connection.prototype.handleMessage = function (msginfo) {
             continue;
         }
         var msgBody = msg.bodies[0];
-        var type = msgBody.type;
+        var type = ''
+        if ( msg.ext['%/IMAGEFLAG/%'] ) {
+            type = 'img'
+        } else {
+            type = msgBody.type
+        }
 
         try {
             switch (type) {
@@ -1970,7 +1976,7 @@ connection.prototype.handleMessage = function (msginfo) {
                         , from: from
                         , to: too
                         ,
-                        url: (location.protocol != 'https:' && self.isHttpDNS) ? (self.apiUrl + msgBody.url.substr(msgBody.url.indexOf("/", 9))) : msgBody.url
+                        url: PP_FILE + msg.ext['%/IMAGEFLAG/%'] + '?access_token=' + Demo.ppToken
                         , secret: msgBody.secret
                         , filename: msgBody.filename
                         , thumb: msgBody.thumb

@@ -83,11 +83,12 @@ var ImgMsg = React.createClass({
 });
 
 module.exports = function (options, sentByMe) {
+    var value = options.value.split('?')[1] ? options.value : options.value + `?access_token=${Demo.ppToken}`
     var props = {
         id: options.id,
         src: options.avatar || 'demo/images/default.png',
         time: options.time || new Date().toLocaleString(),
-        value: options.value + `?access_token=${Demo.ppToken}` || '',
+        value: value,
         name: options.name,
         error: options.error,
         errorText: options.errorText,

@@ -7,22 +7,10 @@
 
 ## 
 
-## QA
+1.代码下载到本地
 
-### Q: IE8下总是提示**拒绝访问**
+2.在本地代码根目录（package.json所在目录）打开命令行，输入npm i
 
-A: 请确保自己的demo地址是否通过web服务，以http协议访问
-   
-原因见： [XDomainRequest](https://developer.mozilla.org/zh-CN/docs/Web/API/XDomainRequest)
+3.在上一步操作执行完毕后在命令行输入npm run dev,成功启动后会自动打开浏览器，页面地址为localhost:3000
 
-```
-XDomainRequest为了确保安全构建，采用了多种方法。
-- 安全协议源必须匹配请求的URL。（http到http，https到https）。如果不匹配，请求会报“拒绝访问”的错误。
-```
-
-
-### no such file or directory, scandir 'node_modules/node-sass/vendor'
-
-`npm rebuild node-sass` is the official solution. Deleting your node_modules and running `npm install` will also do the trick.
-
-https://github.com/sass/node-sass/issues/1579
+4.输入自己电话号即可登录，无需输入密码

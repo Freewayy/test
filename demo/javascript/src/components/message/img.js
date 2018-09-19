@@ -87,7 +87,7 @@ module.exports = function (options, sentByMe) {
         id: options.id,
         src: options.avatar || 'demo/images/default.png',
         time: options.time || new Date().toLocaleString(),
-        value: options.value || '',
+        value: options.value + `?access_token=${Demo.ppToken}` || '',
         name: options.name,
         error: options.error,
         errorText: options.errorText,
@@ -95,7 +95,7 @@ module.exports = function (options, sentByMe) {
         status: options.status || 'Undelivered',
         nid: options.nid || ''
     };
-
+    
     var node = document.createElement('div');
     node.className = 'webim-msg-container rel';
     options.wrapper.appendChild(node);

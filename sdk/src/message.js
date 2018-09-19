@@ -344,20 +344,24 @@ var CryptoJS = require('crypto-js');
             }
             var _tmpComplete = me.msg.onFileUploadComplete;
             var _complete = function (data) {
-                if (data.entities[0]['file-metadata']) {
-                    var file_len = data.entities[0]['file-metadata']['content-length'];
-                    // me.msg.file_length = file_len;
-                    me.msg.filetype = data.entities[0]['file-metadata']['content-type'];
-                    if (file_len > 204800) {
-                        me.msg.thumbnail = true;
+                if (typeof data === 'string') {
+                    var url = 'https://icmp2.propersoft.cn/icmp/server-dev/file/' + data,
+                        secret = '1'
+                } else {
+                    if (data.entities[0]['file-metadata']) {
+                        var file_len = data.entities[0]['file-metadata']['content-length'];
+                        // me.msg.file_length = file_len;
+                        me.msg.filetype = data.entities[0]['file-metadata']['content-type'];
+                        if (file_len > 204800) {
+                            me.msg.thumbnail = true;
+                        }
                     }
                 }
-
                 me.msg.body = {
                     type: me.msg.type || 'file'
                     ,
-                    url: ((location.protocol != 'https:' && conn.isHttpDNS) ? (conn.apiUrl + data.uri.substr(data.uri.indexOf("/", 9))) : data.uri) + '/' + data.entities[0]['uuid']
-                    , secret: data.entities[0]['share-secret']
+                    url: url || ((location.protocol != 'https:' && conn.isHttpDNS) ? (conn.apiUrl + data.uri.substr(data.uri.indexOf("/", 9))) : data.uri) + '/' + data.entities[0]['uuid']
+                    , secret: secret || data.entities[0]['share-secret']
                     , filename: me.msg.file.filename || me.msg.filename
                     , size: {
                         width: me.msg.width || 0

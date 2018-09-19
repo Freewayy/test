@@ -464,7 +464,8 @@
             }
 
             var apiUrl = options.apiUrl;
-            var uploadUrl = apiUrl + '/' + orgName + '/' + appName + '/chatfiles';
+            // var uploadUrl = apiUrl + '/' + orgName + '/' + appName + '/chatfiles';
+            var uploadUrl = 'https://icmp2.propersoft.cn/icmp/server-dev/file/';
 
             if (!utils.isCanUploadFileAsync) {
                 if (utils.hasFlash && typeof options.flashUpload === 'function') {
@@ -508,7 +509,7 @@
                 xhr.addEventListener('abort', options.onFileUploadCanceled, false);
                 xhr.addEventListener('load', function (e) {
                     try {
-                        var json = utils.parseJSON(xhr.responseText);
+                        var json = xhr.responseText;
                         try {
                             options.onFileUploadComplete(json);
                         } catch (e) {
@@ -558,11 +559,10 @@
             }
 
             xhr.open('POST', uploadUrl);
-
-            xhr.setRequestHeader('restrict-access', 'true');
+            //xhr.setRequestHeader('restrict-access', 'true');
             xhr.setRequestHeader('Accept', '*/*');// Android QQ browser has some problem with this attribute.
-            xhr.setRequestHeader('Authorization', 'Bearer ' + acc);
-
+            xhr.setRequestHeader('X-PEP-TOKEN', Demo.ppToken);
+            //xhr.setRequestHeader("Content-Type","application/json; charset=utf-8");
             var formData = new FormData();
             formData.append('file', options.file.data);
             // fix: ie8 status error

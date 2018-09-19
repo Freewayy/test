@@ -67,9 +67,9 @@ var ImgMsg = React.createClass({
                 <Avatar src={this.props.src} className={this.props.className + ' small'}/>
                 <p className={this.props.className}>{this.props.name} {this.props.time}</p>
                 <div className="clearfix">
-                    <div className={"webim-msg-delivered " + statusClass} id={id} name={nid}>
+                    {/* <div className={"webim-msg-delivered " + statusClass} id={id} name={nid}>
                         {status}
-                    </div>
+                    </div> */}
                     <div className='webim-msg-value webim-img-msg-wrapper'>
                         <span className='webim-msg-icon font'>{icon}</span>
                         <div id={'file_' + this.props.id}>{imgs}</div>

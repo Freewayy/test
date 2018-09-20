@@ -437,6 +437,8 @@ module.exports = {
             this.render(this.node, 'stranger');
             return;
         } else {
+            var headimage =  this.sentByMe ? Demo.userInfo.avatar : Demo.avatars[msg.from];
+            
             var avatar = Demo.avatars[msg.from] ? 
                 PP_FILE + Demo.avatars[msg.from] + '?access_token=' + Demo.ppToken : 
                 null;
@@ -498,7 +500,8 @@ module.exports = {
                             imgMsg({
                                 id: msg.id,
                                 wrapper: targetNode,
-                                name: name,
+                                avatar: headimage || null,
+                                name: name || msg.ext.from_username,
                                 value: data || msg.url,
                                 error: msg.error,
                                 errorText: msg.errorText,

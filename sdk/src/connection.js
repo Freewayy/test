@@ -13,7 +13,7 @@ import {
     PP_GROUPS,
     PP_CONCATS,
     PP_FILE
-} from './ppApi'
+} from '../../demo/javascript/src/ppApi'
 
 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 

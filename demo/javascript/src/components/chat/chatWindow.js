@@ -5,7 +5,7 @@ var Avatar = require('../common/avatar');
 var OperationsGroups = require('./operationsGroups');
 var OperationsFriends = require('./operationsFriends');
 var _ = require('underscore');
-import { PP_FILE } from '../../../../../sdk/src/ppApi';
+import { PP_FILE } from '../../ppApi';
 
 module.exports = React.createClass({
     getInitialState: function () {

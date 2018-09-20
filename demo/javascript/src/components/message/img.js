@@ -1,7 +1,7 @@
 var React = require("react");
 var ReactDOM = require('react-dom');
 var Avatar = require('../common/avatar');
-import { PP_FILE } from '../../../../../sdk/src/ppApi';
+import { PP_FILE } from '../../ppApi';
 
 
 var ImgMsg = React.createClass({

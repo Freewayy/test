@@ -7,7 +7,7 @@ var Subscribe = require('./subscribe');
 var ConfirmPop = require('./confirmPop');
 var _ = require('underscore');
 var ConfirmGroupInfo = require('../group/confirmGroupInfo');
-import { PP_USER } from '../../../../../sdk/src/ppApi'
+import { PP_USER } from '../../ppApi'
 
 module.exports = React.createClass({
 

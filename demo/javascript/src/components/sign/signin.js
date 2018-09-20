@@ -1,7 +1,7 @@
 var React = require("react");
 var Notify = require('../common/notify');
 var UI = require('../common/webim-demo');
-import { PP_AUTH } from '../../../../../sdk/src/ppApi'
+import { PP_AUTH } from '../../ppApi'
 var Input = UI.Input;
 var Button = UI.Button;
 var Checkbox = UI.Checkbox;

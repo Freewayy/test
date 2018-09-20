@@ -11,7 +11,7 @@ var videoMsg = require('./components/message/video');
 var Notify = require('./components/common/notify');
 var _ = require('underscore');
 var CryptoJS = require('crypto-js');
-import { PP_FILE } from '../../../sdk/src/ppApi';
+import { PP_FILE } from '../src/ppApi';
 
 var Blacklist = (function () {
     var data = {};

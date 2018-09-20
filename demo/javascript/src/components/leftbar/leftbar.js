@@ -3,7 +3,7 @@ var React = require('react');
 var Avatar = require('../common/avatar');
 var Cate = require('./cate');
 var Operations = require('./operations');
-import { PP_FILE } from '../../../../../sdk/src/ppApi';
+import { PP_FILE } from '../../ppApi';
 
 
 module.exports = React.createClass({

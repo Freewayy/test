@@ -1,6 +1,6 @@
 var React = require("react");
 var Item = require('./contactItem');
-import { PP_FILE } from '../../../../../sdk/src/ppApi';
+import { PP_FILE } from '../../ppApi';
 
 module.exports = React.createClass({
 

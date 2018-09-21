@@ -2,6 +2,7 @@ var React = require("react");
 var ReactDOM = require('react-dom');
 var Avatar = require('../common/avatar');
 var _utils = require('../../../../../sdk/src/utils').utils;
+import { PP_FILE } from '../../ppApi';
 
 var FileMsg = React.createClass({
     getInitialState: function () {
@@ -100,11 +101,13 @@ var FileMsg = React.createClass({
 });
 
 module.exports = function (options, sentByMe) {
+    var avatar = options.avatar ? `${PP_FILE}${options.avatar}?access_token=${Demo.ppToken}` : 'demo/images/default.png';
+    var value = `${PP_FILE}${options.value}?access_token=${Demo.ppToken}`
     var props = {
         id: options.id,
-        src: options.avatar || 'demo/images/default.png',
+        src: avatar,
         time: options.time || new Date().toLocaleString(),
-        value: options.value || '',
+        value: value || '',
         name: options.name,
         filename: options.filename || '',
         error: options.error,

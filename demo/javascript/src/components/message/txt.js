@@ -1,6 +1,7 @@
 var React = require("react");
 var ReactDOM = require('react-dom');
 var Avatar = require('../common/avatar');
+import { PP_FILE } from '../../ppApi';
 
 
 var TextMsg = React.createClass({
@@ -48,9 +49,9 @@ var TextMsg = React.createClass({
 });
 
 module.exports = function (options, sentByMe) {
-    
+    var avatar = options.avatar ? `${PP_FILE}${options.avatar}?access_token=${Demo.ppToken}` : 'demo/images/default.png';
     var props = {
-        src: options.avatar || 'demo/images/default.png',
+        src: avatar,
         time: options.time || new Date().toLocaleString(),
         value: options.value || '',
         name: options.name,

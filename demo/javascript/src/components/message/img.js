@@ -84,6 +84,7 @@ var ImgMsg = React.createClass({
 });
 
 module.exports = function (options, sentByMe) {
+    
     var avatar = options.avatar ? `${PP_FILE}${options.avatar}?access_token=${Demo.ppToken}` : 'demo/images/default.png';
     var value = `${PP_FILE}${options.value}?access_token=${Demo.ppToken}`
     var props = {

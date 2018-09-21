@@ -29,6 +29,7 @@ var LocMsg = React.createClass({
 });
 
 module.exports = function (options, sentByMe) {
+    console.log('option', options)
     var props = {
         src: options.avatar || 'demo/images/default.png',
         time: options.time || new Date().toLocaleString(),

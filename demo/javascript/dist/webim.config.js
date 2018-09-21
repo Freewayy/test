@@ -16,6 +16,11 @@ WebIM.config = {
      */
     apiURL: (location.protocol === 'https:' ? 'https:' : 'http:') + '//a1.easemob.com',
     /*
+     * 自己服务器相关配置
+     */
+    BASE_URL: 'https://icmp2.propersoft.cn/icmp/server-dev',
+    packageName: "com.proper.icmp.dev",
+    /*
      * Application AppKey
      */
     appkey: '1166171023115752#icmp',

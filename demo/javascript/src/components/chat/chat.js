@@ -1242,10 +1242,10 @@ module.exports = React.createClass({
                 Demo.api.appendMsg(option, 'txt');
             },
             onFileUploadComplete: function (data) {
-                var url = ((location.protocol != 'https:' && WebIM.config.isHttpDNS) ? (Demo.conn.apiUrl + data.uri.substr(data.uri.indexOf("/", 9))) : data.uri) + '/' + data.entities[0].uuid;
+                //var url = ((location.protocol != 'https:' && WebIM.config.isHttpDNS) ? (Demo.conn.apiUrl + data.uri.substr(data.uri.indexOf("/", 9))) : data.uri) + '/' + data.entities[0].uuid;
                 me.refs.file.value = null;
                 var option = {
-                    data: url,
+                    data: data,
                     filename: filename,
                     from: Demo.user,
                     to: Demo.selected,

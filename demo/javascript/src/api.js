@@ -449,9 +449,9 @@ module.exports = {
                 switch (type) {
                     case 'txt':
                         textMsg({
-                            avatar, 
+                            avatar: headimage || null,
                             wrapper: targetNode,
-                            name: name,
+                            name: name || msg.ext.from_username,
                             value: brief,
                             error: msg.error,
                             errorText: msg.errorText,
@@ -463,7 +463,8 @@ module.exports = {
                     case 'emoji':
                         textMsg({
                             wrapper: targetNode,
-                            name: name,
+                            avatar: headimage || null,
+                            name: name || msg.ext.from_username,
                             value: brief,
                             error: msg.error,
                             errorText: msg.errorText,
@@ -576,7 +577,8 @@ module.exports = {
                             var option = {
                                 id: msg.id,
                                 wrapper: targetNode,
-                                name: name,
+                                avatar: headimage || null,
+                                name: name || msg.ext.from_username,
                                 value: data || msg.url,
                                 filename: msg.filename,
                                 error: msg.error,
